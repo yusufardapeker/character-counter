@@ -1,8 +1,8 @@
 function App() {
 	return (
-		<>
-			<h1>Hello!</h1>
-		</>
+		<div className="container">
+			<h1>Character Counter</h1>
+		</div>
 	);
 }
 
