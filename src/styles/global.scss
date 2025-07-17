@@ -1,0 +1,22 @@
+$dark-purple: hsl(243, 25%, 29%);
+$dark-blue: hsl(213, 58%, 19%);
+$red: hsl(0, 54%, 57%);
+$purple: hsl(228, 52%, 64%);
+$orange: hsl(31, 85%, 62%);
+$grey: hsl(225, 21%, 67%);
+$white: hsl(0, 0%, 100%);
+
+body {
+	background-color: $dark-purple;
+	color: $white;
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+	font-size: 18px;
+}
+
+.container {
+	width: 88%;
+	max-width: 1200px;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 24px 0;
+}
