@@ -1,0 +1,37 @@
+:root {
+	--black: hsl(0, 0%, 0%);
+	--off-black: hsla(240, 6%, 11%, 1);
+	--dark-purple: hsl(243, 25%, 29%);
+	--red: hsl(0, 54%, 57%);
+	--grayish-blue: hsl(228, 52%, 64%);
+	--green: #5aa469;
+	--very-light-purple: hsl(261, 100%, 97%);
+	--white: hsl(0, 0%, 100%);
+
+	--fw-l: 500;
+	--fw-xl: 600;
+}
+
+body {
+	background-color: var(--black);
+	color: var(--white);
+	font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial,
+		sans-serif;
+	font-size: 18px;
+	font-weight: var(--fw-l);
+}
+
+.container {
+	width: 88%;
+	max-width: 1200px;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 32px 0;
+}
+
+h1 {
+	font-size: 28px;
+	font-weight: var(--fw-xl);
+	margin-bottom: 72px;
+	text-align: center;
+}
