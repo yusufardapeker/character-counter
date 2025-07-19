@@ -1,4 +1,6 @@
 import styled, { css } from "styled-components";
+import { IoMdClose } from "react-icons/io";
+import { FaCheck } from "react-icons/fa6";
 
 export const Form = styled.form`
 	position: relative;
@@ -43,11 +45,80 @@ export const Input = styled.textarea.attrs({
 	}
 `;
 
+export const DefineCharLimit = styled.div`
+	display: flex;
+	gap: 20px;
+	align-items: center;
+	position: absolute;
+	top: 240px;
+	left: 0;
+	z-index: 1;
+	background-color: var(--dark-purple);
+	padding: 12px;
+	border-radius: 4px;
+	animation: animateDefineCharLimit 400ms ease-out 1 forwards;
+
+	@keyframes animateDefineCharLimit {
+		from {
+			transform: scale(0.7);
+		}
+		to {
+			transform: scale(1);
+		}
+	}
+`;
+
+export const CharLimitInput = styled.input.attrs({
+	type: "number",
+	min: 0,
+	autoFocus: true,
+})`
+	width: 72px;
+	border-radius: 2px;
+	padding: 4px;
+`;
+
+export const IconsWrapper = styled.div`
+	display: flex;
+	gap: 12px;
+`;
+
+export const CheckIcon = styled(FaCheck)`
+	background-color: var(--green);
+	padding: 2px;
+	font-size: 22px;
+	border-radius: 2px;
+`;
+
+export const CrossIcon = styled(IoMdClose)`
+	background-color: var(--red);
+	padding: 2px;
+	font-size: 22px;
+	border-radius: 2px;
+`;
+
 export const LimitIndicator = styled.span`
 	position: absolute;
 	right: 0;
 	top: 250px;
 	font-size: 15px;
+
+	${({ hasError }) =>
+		hasError &&
+		css`
+			color: var(--red);
+			animation: heartBeatAnimation 800ms linear infinite alternate;
+		`}
+
+	@keyframes heartBeatAnimation {
+		from {
+			transform: scale(1);
+		}
+
+		to {
+			transform: scale(1.1);
+		}
+	}
 `;
 
 export const Filters = styled.div`
