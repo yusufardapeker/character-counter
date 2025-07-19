@@ -9,9 +9,9 @@ import {
 import { useState } from "react";
 
 function Input() {
-	const { text, showCharLimit, showDefineCharLimit, charLimit, hasLimitError } = useSelector(
-		(state) => state.counter
-	);
+	const { text, showCharLimit, showDefineCharLimit, charLimit, hasLimitError, readingTime } =
+		useSelector((state) => state.counter);
+
 	const dispatch = useDispatch();
 	const [limitInputChecked, setLimitInputChecked] = useState(false);
 
@@ -73,7 +73,10 @@ function Input() {
 				</S.FilterElementWrapper>
 			</S.Filters>
 
-			<S.ReadingTimeElement>Est. reading time: 0 minute</S.ReadingTimeElement>
+			<S.ReadingTimeElement>
+				Est. reading time:&nbsp;
+				{readingTime === 0 ? "<1 minute" : `${readingTime} minutes`}
+			</S.ReadingTimeElement>
 		</S.Form>
 	);
 }

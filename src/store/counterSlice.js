@@ -6,6 +6,8 @@ const initialState = {
 	charLimit: 0,
 	showDefineCharLimit: false,
 	hasLimitError: false,
+	wordCount: 0,
+	readingTime: 0,
 };
 
 export const counterSlice = createSlice({
@@ -23,6 +25,9 @@ export const counterSlice = createSlice({
 			}
 
 			state.text = newText;
+
+			state.wordCount = state.text.split(" ").filter((word) => word !== "").length;
+			state.readingTime = Math.floor(state.wordCount / 200);
 		},
 
 		setLimit: (state, action) => {
