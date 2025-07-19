@@ -2,6 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
 	text: "",
+	originalText: "",
+	excludedSpacesText: "",
 	showCharLimit: false,
 	charLimit: 0,
 	showDefineCharLimit: false,
@@ -25,8 +27,9 @@ export const counterSlice = createSlice({
 			}
 
 			state.text = newText;
+			state.originalText = newText;
 
-			state.wordCount = state.text.split(" ").filter((word) => word !== "").length;
+			state.wordCount = state.originalText.split(" ").filter((word) => word !== "").length;
 			state.readingTime = Math.floor(state.wordCount / 200);
 		},
 
@@ -41,10 +44,23 @@ export const counterSlice = createSlice({
 		showCharLimitIndicator: (state, action) => {
 			state.showCharLimit = action.payload;
 		},
+
+		filterSpaces: (state, action) => {
+			if (action.payload) {
+				state.excludedSpacesText = state.text
+					.split(" ")
+					.filter((word) => word !== "")
+					.join("");
+
+				state.text = state.excludedSpacesText;
+			} else {
+				state.text = state.originalText;
+			}
+		},
 	},
 });
 
-export const { setText, setLimit, showDefineCharLimitPopup, showCharLimitIndicator } =
+export const { setText, setLimit, showDefineCharLimitPopup, showCharLimitIndicator, filterSpaces } =
 	counterSlice.actions;
 
 export default counterSlice.reducer;

@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import * as S from "./styled";
 import {
+	filterSpaces,
 	setLimit,
 	setText,
 	showCharLimitIndicator,
@@ -25,6 +26,11 @@ function Input() {
 			dispatch(showDefineCharLimitPopup(false));
 			dispatch(showCharLimitIndicator(false));
 		}
+	};
+
+	const handleFilterSpaces = (e) => {
+		const isChecked = e.target.checked;
+		dispatch(filterSpaces(isChecked));
 	};
 
 	const handleCrossIcon = () => {
@@ -63,7 +69,7 @@ function Input() {
 
 			<S.Filters>
 				<S.FilterElementWrapper>
-					<S.FilterSpacesCheckbox />
+					<S.FilterSpacesCheckbox onChange={(e) => handleFilterSpaces(e)} />
 					<S.FilterSpacesLabel>Exclude Spaces</S.FilterSpacesLabel>
 				</S.FilterElementWrapper>
 
