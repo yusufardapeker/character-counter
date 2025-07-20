@@ -10,6 +10,8 @@ const initialState = {
 	hasLimitError: false,
 	wordCount: 0,
 	readingTime: 0,
+	totalCharCount: 0,
+	sentenceCount: 0,
 };
 
 export const counterSlice = createSlice({
@@ -18,6 +20,7 @@ export const counterSlice = createSlice({
 	reducers: {
 		setText: (state, action) => {
 			const newText = action.payload;
+			const wordPerMinute = 200;
 
 			if (state.showCharLimit && state.charLimit < newText.length) {
 				state.hasLimitError = true;
@@ -29,8 +32,16 @@ export const counterSlice = createSlice({
 			state.text = newText;
 			state.originalText = newText;
 
-			state.wordCount = state.originalText.split(" ").filter((word) => word !== "").length;
-			state.readingTime = Math.floor(state.wordCount / 200);
+			state.totalCharCount = state.text.length;
+
+			state.wordCount = state.originalText
+				.split(" ")
+				.filter((word) => /[abcçdefgğhıijklmnoöprsştuüvyzwqx]/i.test(word)).length;
+			state.readingTime = Math.floor(state.wordCount / wordPerMinute);
+
+			state.sentenceCount = state.text
+				.split(/(?<=[.!?])\s+/)
+				.filter((sentence) => /[abcçdefgğhıijklmnoöprsştuüvyzwqx]/i.test(sentence)).length;
 		},
 
 		setLimit: (state, action) => {
@@ -53,8 +64,10 @@ export const counterSlice = createSlice({
 					.join("");
 
 				state.text = state.excludedSpacesText;
+				state.totalCharCount = state.excludedSpacesText.length;
 			} else {
 				state.text = state.originalText;
+				state.totalCharCount = state.text.length;
 			}
 		},
 	},
