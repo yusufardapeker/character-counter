@@ -18,7 +18,7 @@ export const counterSlice = createSlice({
 	name: "counter",
 	initialState,
 	reducers: {
-		setText: (state, action) => {
+		handleTextInput: (state, action) => {
 			const newText = action.payload;
 			const wordPerMinute = 200;
 
@@ -73,7 +73,12 @@ export const counterSlice = createSlice({
 	},
 });
 
-export const { setText, setLimit, showDefineCharLimitPopup, showCharLimitIndicator, filterSpaces } =
-	counterSlice.actions;
+export const {
+	handleTextInput,
+	setLimit,
+	showDefineCharLimitPopup,
+	showCharLimitIndicator,
+	filterSpaces,
+} = counterSlice.actions;
 
 export default counterSlice.reducer;

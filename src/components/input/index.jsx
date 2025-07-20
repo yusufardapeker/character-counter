@@ -3,7 +3,7 @@ import * as S from "./styled";
 import {
 	filterSpaces,
 	setLimit,
-	setText,
+	handleTextInput,
 	showCharLimitIndicator,
 	showDefineCharLimitPopup,
 } from "../../store/counterSlice";
@@ -45,7 +45,7 @@ function Input() {
 
 	return (
 		<S.Form>
-			<S.Input onChange={(e) => dispatch(setText(e.target.value))} value={text} />
+			<S.Input onChange={(e) => dispatch(handleTextInput(e.target.value))} value={text} />
 
 			{showCharLimit && (
 				<S.LimitIndicator hasError={hasLimitError}>
