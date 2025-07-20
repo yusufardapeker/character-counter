@@ -4,6 +4,10 @@ export const CountStatistics = styled.div`
 	display: grid;
 	gap: 24px;
 	margin-bottom: 40px;
+
+	@media (width > 376px) {
+		grid-template-columns: repeat(3, 1fr);
+	}
 `;
 
 export const statisticsItem = css`
@@ -32,6 +36,10 @@ export const CountSentence = styled.div`
 export const ItemNumber = styled.span`
 	font-size: 28px;
 	font-weight: var(--fw-xl);
+
+	@media (width > 376px) {
+		font-size: 32px;
+	}
 `;
 
 export const ItemTitle = styled.p``;

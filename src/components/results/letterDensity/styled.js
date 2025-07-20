@@ -7,6 +7,10 @@ export const LetterDensity = styled.div``;
 export const Title = styled.h2`
 	font-size: 24px;
 	margin-bottom: 24px;
+
+	@media (width > 376px) {
+		font-size: 26px;
+	}
 `;
 
 export const LetterItemWrapper = styled.div`

@@ -66,6 +66,12 @@ export const DefineCharLimit = styled.div`
 			transform: scale(1);
 		}
 	}
+
+	@media (width > 376px) {
+		top: 200px;
+		left: 40%;
+		padding: 16px;
+	}
 `;
 
 export const CharLimitInput = styled.input.attrs({
@@ -76,6 +82,10 @@ export const CharLimitInput = styled.input.attrs({
 	width: 72px;
 	border-radius: 2px;
 	padding: 4px;
+
+	@media (width > 376px) {
+		padding: 6px;
+	}
 `;
 
 export const IconsWrapper = styled.div`
@@ -83,18 +93,25 @@ export const IconsWrapper = styled.div`
 	gap: 12px;
 `;
 
-export const CheckIcon = styled(FaCheck)`
-	background-color: var(--green);
+export const iconsStyle = css`
 	padding: 2px;
 	font-size: 22px;
 	border-radius: 2px;
+	cursor: pointer;
+
+	@media (width > 376px) {
+		font-size: 24px;
+	}
+`;
+
+export const CheckIcon = styled(FaCheck)`
+	${iconsStyle}
+	background-color: var(--green);
 `;
 
 export const CrossIcon = styled(IoMdClose)`
+	${iconsStyle}
 	background-color: var(--red);
-	padding: 2px;
-	font-size: 22px;
-	border-radius: 2px;
 `;
 
 export const LimitIndicator = styled.span`
@@ -119,6 +136,11 @@ export const LimitIndicator = styled.span`
 			transform: scale(1.1);
 		}
 	}
+
+	@media (width > 376px) {
+		top: 280px;
+		font-size: 17px;
+	}
 `;
 
 export const Filters = styled.div`
@@ -127,6 +149,12 @@ export const Filters = styled.div`
 	gap: 12px;
 	font-size: 16px;
 	margin-bottom: 24px;
+
+	@media (width > 376px) {
+		flex-direction: row;
+		gap: 20px;
+		font-size: 18px;
+	}
 `;
 
 export const FilterElementWrapper = styled.div`
@@ -135,36 +163,47 @@ export const FilterElementWrapper = styled.div`
 	align-items: center;
 `;
 
+export const pseudoElementStyle = css`
+	content: "";
+	position: absolute;
+	width: 1.5px;
+	height: 16px;
+	top: -1px;
+	background-color: var(--green);
+	transform: rotate(30deg);
+	display: none;
+`;
+
 export const inputStyle = css`
 	appearance: none;
-	width: 16px;
-	height: 16px;
+	width: 24px;
+	height: 24px;
 	border: 2px solid var(--dark-purple);
 	position: relative;
 	overflow: hidden;
+	cursor: pointer;
+
+	@media (width > 376px) {
+		width: 18px;
+		height: 18px;
+	}
 
 	&::before {
-		content: "";
-		position: absolute;
-		width: 1.5px;
-		height: 16px;
-		left: 2px;
-		top: -1px;
-		background-color: var(--green);
-		transform: rotate(30deg);
-		display: none;
+		${pseudoElementStyle}
+		left: 2.5px;
+
+		@media (width > 376px) {
+			left: 3.5px;
+		}
 	}
 
 	&::after {
-		content: "";
-		position: absolute;
-		width: 1.5px;
-		height: 16px;
-		left: 8px;
-		top: -1px;
-		background-color: var(--green);
-		transform: rotate(30deg);
-		display: none;
+		${pseudoElementStyle}
+		left: 8.5px;
+
+		@media (width > 376px) {
+			left: 9.5px;
+		}
 	}
 
 	&:checked {
@@ -186,7 +225,9 @@ export const FilterSpacesCheckbox = styled.input.attrs({
 
 export const FilterSpacesLabel = styled.label.attrs({
 	htmlFor: "filter-spaces",
-})``;
+})`
+	cursor: pointer;
+`;
 
 export const SetLimitCheckbox = styled.input.attrs({
 	type: "checkbox",
@@ -197,8 +238,14 @@ export const SetLimitCheckbox = styled.input.attrs({
 
 export const SetLimitLabel = styled.label.attrs({
 	htmlFor: "set-limit",
-})``;
+})`
+	cursor: pointer;
+`;
 
 export const ReadingTimeElement = styled.p`
 	font-size: 16px;
+
+	@media (width > 376px) {
+		font-size: 18px;
+	}
 `;
