@@ -33,6 +33,7 @@ button {
 	cursor: pointer;
 	background-color: transparent;
 	font: inherit;
+	color: inherit;
 }
 
 input,

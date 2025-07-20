@@ -1,4 +1,6 @@
 import styled, { css } from "styled-components";
+import { IoIosArrowDown } from "react-icons/io";
+import { IoIosArrowUp } from "react-icons/io";
 
 export const LetterDensity = styled.div``;
 
@@ -11,19 +13,23 @@ export const LetterItemWrapper = styled.div`
 	display: flex;
 	flex-direction: column;
 	gap: 16px;
+	margin-bottom: 24px;
 `;
 
 export const LetterItem = styled.div`
 	display: flex;
-	gap: 12px;
+	gap: 8px;
 	align-items: center;
 `;
 
-export const Letter = styled.span``;
+export const Letter = styled.span`
+	text-transform: uppercase;
+	width: 2ch;
+`;
 
 export const DensityBar = styled.span`
 	flex: 1;
-	background-color: var(--very-light-purple);
+	background-color: var(--off-white);
 	height: 8px;
 	border-radius: 8px;
 	position: relative;
@@ -41,6 +47,24 @@ export const DensityBar = styled.span`
 	}
 `;
 
-export const DensityPercentage = styled.span``;
+export const DensityPercentage = styled.span`
+	width: 9ch;
+	text-align: right;
+`;
 
-export const ShowMoreButton = styled.button``;
+export const EmptyTextMessage = styled.p`
+	font-size: 16px;
+`;
+
+export const ShowLetterDensityButton = styled.button`
+	display: flex;
+	gap: 8px;
+`;
+
+export const ShowMoreArrow = styled(IoIosArrowDown)`
+	margin-top: 3px;
+`;
+
+export const ShowLessArrow = styled(IoIosArrowUp)`
+	margin-top: 3px;
+`;

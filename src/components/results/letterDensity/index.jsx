@@ -1,23 +1,51 @@
+import { useSelector } from "react-redux";
 import * as S from "./styled";
+import { useState } from "react";
 
 function LetterDensity() {
+	const { letterItems, originalText } = useSelector((state) => state.counter);
+	const sortedLetters = [...letterItems].sort((a, b) => b.count - a.count);
+	const [letterDensityLimit, setLetterDensityLimit] = useState(5);
+
+	const calculatePercent = (count) => {
+		return Math.ceil((count / originalText.length) * 100).toFixed();
+	};
+
 	return (
 		<S.LetterDensity>
 			<S.Title>Letter Density</S.Title>
 
-			<S.LetterItemWrapper>
-				<S.LetterItem>
-					<S.Letter>A</S.Letter>
-					<S.DensityBar percent={16}></S.DensityBar>
-					<S.DensityPercentage>40 (16%)</S.DensityPercentage>
-				</S.LetterItem>
+			{originalText.length > 0 ? (
+				<>
+					<S.LetterItemWrapper>
+						{sortedLetters
+							.slice(0, letterDensityLimit || sortedLetters.length)
+							.map((letterItem, index) => (
+								<S.LetterItem key={index}>
+									<S.Letter>{letterItem.letter}</S.Letter>
+									<S.DensityBar percent={calculatePercent(letterItem.count)}></S.DensityBar>
+									<S.DensityPercentage>
+										{letterItem.count} {`(${calculatePercent(letterItem.count)}%)`}
+									</S.DensityPercentage>
+								</S.LetterItem>
+							))}
+					</S.LetterItemWrapper>
 
-				<S.LetterItem>
-					<S.Letter>B</S.Letter>
-					<S.DensityBar percent={24}></S.DensityBar>
-					<S.DensityPercentage>56 (24%)</S.DensityPercentage>
-				</S.LetterItem>
-			</S.LetterItemWrapper>
+					{letterDensityLimit ? (
+						<S.ShowLetterDensityButton onClick={() => setLetterDensityLimit(false)}>
+							Show more
+							<S.ShowMoreArrow />
+						</S.ShowLetterDensityButton>
+					) : (
+						<S.ShowLetterDensityButton onClick={() => setLetterDensityLimit(5)}>
+							Show less
+							<S.ShowLessArrow />
+						</S.ShowLetterDensityButton>
+					)}
+				</>
+			) : (
+				<S.EmptyTextMessage>Start typing to see letter density.</S.EmptyTextMessage>
+			)}
 		</S.LetterDensity>
 	);
 }

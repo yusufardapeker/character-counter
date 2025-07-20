@@ -12,6 +12,7 @@ const initialState = {
 	readingTime: 0,
 	totalCharCount: 0,
 	sentenceCount: 0,
+	letterItems: [],
 };
 
 export const counterSlice = createSlice({
@@ -21,6 +22,7 @@ export const counterSlice = createSlice({
 		handleTextInput: (state, action) => {
 			const newText = action.payload;
 			const wordPerMinute = 200;
+			const letterCounts = {};
 
 			if (state.showCharLimit && state.charLimit < newText.length) {
 				state.hasLimitError = true;
@@ -42,6 +44,18 @@ export const counterSlice = createSlice({
 			state.sentenceCount = state.text
 				.split(/(?<=[.!?])\s+/)
 				.filter((sentence) => /[abcçdefgğhıijklmnoöprsştuüvyzwqx]/i.test(sentence)).length;
+
+			state.text
+				.split("")
+				.filter((letter) => /[abcçdefgğhıijklmnoöprsştuüvyzwqx]/i.test(letter))
+				.forEach((letter) => {
+					letterCounts[letter] = (letterCounts[letter] || 0) + 1;
+				});
+
+			state.letterItems = Object.entries(letterCounts).map(([letter, count]) => ({
+				letter,
+				count,
+			}));
 		},
 
 		setLimit: (state, action) => {
