@@ -30,4 +30,4 @@ npm install
 npm run dev
 ```
 
-4. Go to http://localhost:3000
+4. Go to http://localhost:5173
