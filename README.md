@@ -1,6 +1,6 @@
 ### Links
 
-Live Site URL: [The Website](https://)
+Live Site URL: [The Website](https://character-counter5039.netlify.app/)
 
 ### Built with
 
