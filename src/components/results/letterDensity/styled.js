@@ -60,6 +60,8 @@ export const EmptyTextMessage = styled.p`
 	font-size: 16px;
 `;
 
+export const ShowLetterDensityButtonWrapper = styled.div``;
+
 export const ShowLetterDensityButton = styled.button`
 	display: flex;
 	gap: 8px;

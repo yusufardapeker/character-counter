@@ -31,16 +31,20 @@ function LetterDensity() {
 							))}
 					</S.LetterItemWrapper>
 
-					{letterDensityLimit ? (
-						<S.ShowLetterDensityButton onClick={() => setLetterDensityLimit(false)}>
-							Show more
-							<S.ShowMoreArrow />
-						</S.ShowLetterDensityButton>
-					) : (
-						<S.ShowLetterDensityButton onClick={() => setLetterDensityLimit(5)}>
-							Show less
-							<S.ShowLessArrow />
-						</S.ShowLetterDensityButton>
+					{sortedLetters.length > 5 && (
+						<S.ShowLetterDensityButtonWrapper>
+							{letterDensityLimit ? (
+								<S.ShowLetterDensityButton onClick={() => setLetterDensityLimit(false)}>
+									Show more
+									<S.ShowMoreArrow />
+								</S.ShowLetterDensityButton>
+							) : (
+								<S.ShowLetterDensityButton onClick={() => setLetterDensityLimit(5)}>
+									Show less
+									<S.ShowLessArrow />
+								</S.ShowLetterDensityButton>
+							)}
+						</S.ShowLetterDensityButtonWrapper>
 					)}
 				</>
 			) : (
